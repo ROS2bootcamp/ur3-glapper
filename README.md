@@ -1,7 +1,7 @@
 #
 ---
 
-# 🤖 UR3 + Robotiq 2F-85 Integration
+# UR3 + Robotiq 2F-85 Integration
 
 본 프로젝트에서는 기본 UR3 모델에 Robotiq 2F-85 그리퍼를 추가하여 RViz 환경에서 모델을 확인하고 관절 동작을 테스트할 수 있도록 구성하였다.
 
