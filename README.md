@@ -125,7 +125,7 @@ Description Topic
 # Gripper Service Control
 
 ROS2 Service를 이용하여 Robotiq 2F-85 그리퍼를 열고 닫을 수 있는 기능 확인
-
+** gripper_simple-service_move기준으로 branch clone하기
 ## Build
 
 ```bash
