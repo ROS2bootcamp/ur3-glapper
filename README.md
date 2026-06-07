@@ -122,6 +122,80 @@ Description Topic
 
 ---
 
+# Gripper Service Control
+
+ROS2 Service를 이용하여 Robotiq 2F-85 그리퍼를 열고 닫을 수 있는 기능 확인
+
+## Build
+
+```bash
+colcon build --packages-select gripper_service
+source install/setup.bash
+```
+
+## Run
+
+### Terminal 1
+
+```bash
+source /opt/ros/humble/setup.bash
+source install/setup.bash
+
+xacro src/ur3_robotiq_2f85/urdf/ur3_robotiq_2f85.urdf.xacro > /tmp/ur3_robotiq.urdf
+
+ros2 run robot_state_publisher robot_state_publisher \
+/tmp/ur3_robotiq.urdf
+```
+
+### Terminal 2
+
+```bash
+source /opt/ros/humble/setup.bash
+source install/setup.bash
+
+rviz2
+```
+
+### Terminal 3
+
+```bash
+source /opt/ros/humble/setup.bash
+source install/setup.bash
+
+ros2 run gripper_service gripper_arm_server
+```
+
+## Open Gripper
+
+```bash
+ros2 service call /gripper_open std_srvs/srv/Trigger
+```
+
+## Close Gripper
+
+```bash
+ros2 service call /gripper_close std_srvs/srv/Trigger
+```
+
+## Available Services
+
+```bash
+ros2 service list
+```
+
+Expected:
+
+```text
+/gripper_open
+/gripper_close
+```
+
+## Result
+
+* Service 기반 그리퍼 제어
+* RViz 실시간 시각화
+* ROS2 Topic / Service 통신 학습
+
 ## 현재 구현 상태
 
 | 기능               | 상태 |
@@ -129,7 +203,8 @@ Description Topic
 | UR3 모델 로드        | ✅  |
 | Robotiq 2F-85 결합 | ✅  |
 | RViz 시각화         | ✅  |
-| 관절 조작            | ✅  |
+| 관절 조작 (GUI)         | ✅  |
+| Arm service 제어       | ✅  |
 | Gazebo Spawn     | ⏳  |
 | ros2_control     | ⏳  |
 | MoveIt 연동        | ⏳  |
